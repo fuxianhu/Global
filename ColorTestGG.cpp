@@ -1,5 +1,6 @@
 // https://www.arealme.com/colors/cn/
 #include <windows.h>
+#include <iostream>
 #include <ctime>
 void scrollMouse(int delta)
 {
@@ -23,7 +24,9 @@ void clickMouse(int x, int y)
 }
 int main()
 {
+    std::cout << "Start before 3 seconds...\n";
     Sleep(3000);
+    SetCursorPos(949, 636);
     scrollMouse(1000);
     Sleep(100);
     clickMouse(949, 636);
@@ -38,10 +41,14 @@ int main()
                 clickMouse(670 + i * 100, 290 + j * 100);
                 if ((GetKeyState(VK_SPACE) & 0x8000) != 0)
                 {
+                    std::cout << "Space is press. Program stop.\n";
+                    system("pause");
                     return 0;
                 }
             }
         }
     }
+    std::cout << "TLE. Program stop.\n";
+    system("pause");
     return 0;
 }
